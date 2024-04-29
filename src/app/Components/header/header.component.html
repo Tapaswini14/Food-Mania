@@ -1,0 +1,43 @@
+<div class="navBar" *ngIf="hideOnLogin" id="nv">
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <a class="navbar-brand" routerLink="/home">Restaurant Northstreet</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar" style="align-items: right; justify-content: end">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/menu">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/service">Service</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact">Contact</a>
+        </li>
+        <li class="btn-primary nav-item text-white" role="button">
+          <button class=" btn btn-danger text-white" (click)="logout()">logout</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="header" *ngIf="hideOnLogin">
+  <div class="IntroMsg">
+    <img alt="Garcia Taverns where food meets passion" class="logo" src="../assets/bg.jpg" id="introLogo" />
+  </div>
+  <!-- subject-->
+  <div class="IntroMsg1">
+    <h1>Stunning food, Amazing Quaility</h1>
+    <span> Let us host your next special occassion </span>
+    <h2>
+      <a href="call:111-111-111" style="text-decoration: none; color: white">
+        <i class="bi bi-telephone-forward-fill">
+          <span> Contact US today </span></i></a>
+    </h2>
+  </div>
+</div>
