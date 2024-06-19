@@ -1,1 +1,16 @@
 <app-header></app-header>
+<div class="header" *ngIf="hideOnLogin">
+    <div class="IntroMsg">
+        <img alt="Garcia Taverns where food meets passion" class="logo" src="../assets/bg.jpg" id="introLogo" />
+    </div>
+    <!-- subject-->
+    <div class="IntroMsg1">
+        <h1>Stunning food, Amazing Quality</h1>
+        <span> Let us host your next special occassion </span>
+        <h2>
+            <a href="call:111-111-111" style="text-decoration: none; color: white">
+                <i class="bi bi-telephone-forward-fill">
+                    <span> Contact US today </span></i></a>
+        </h2>
+    </div>
+</div>

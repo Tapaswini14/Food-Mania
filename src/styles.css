@@ -1,1 +1,52 @@
+/*  grid system for the webpage */
 
+.header {
+  width: 80%;
+  height: auto;
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.header > div {
+  margin-top: 10%;
+  max-width: 100%;
+}
+
+.IntroMsg {
+  margin: 20px;
+  position: relative;
+  width: 100%;
+  left: 5%;
+  top: -20%;
+  text-align: center;
+  padding: 10px;
+  height: auto;
+  opacity: 0.9;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.IntroMsg1 {
+  margin: 20px;
+  position: relative;
+  width: 100%;
+  left: 5%;
+  top: -190%;
+  text-align: center;
+  padding: 10px;
+  height: auto;
+  opacity: 0.9;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 70%;
+}

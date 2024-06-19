@@ -11,13 +11,26 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './Components/header/header.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, MenuComponent, HeaderComponent, NotFoundComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    MenuComponent,
+    HeaderComponent,
+    NotFoundComponent,
+    ProfileComponent,
+    ContactUsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     NgbModule,
     MatIconModule,
     FontAwesomeModule,

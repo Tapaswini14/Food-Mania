@@ -1,63 +1,37 @@
 <app-header></app-header>
+<div class="header" *ngIf="hideOnLogin">
+  <div class="IntroMsg">
+    <img alt="Garcia Taverns where food meets passion" class="logo" src="../assets/bg.jpg" id="introLogo" />
+  </div>
+  <!-- subject-->
+  <div class="IntroMsg1">
+    <h1>Stunning food, Amazing Quality</h1>
+    <span> Let us host your next special occassion </span>
+    <h2>
+      <a href="call:111-111-111" style="text-decoration: none; color: white">
+        <i class="bi bi-telephone-forward-fill">
+          <span> Contact US today </span></i></a>
+    </h2>
+  </div>
+</div>
 <div class="menu" style="margin-top: 50%">
   <div class="menuIntro">
     <!-- img tile system -->
-    <img
-      src="https://i.ibb.co/QCxY7FT/michael-discenza-Mxfcoxyc-H-Y-unsplash.jpg"
-    />
-    <img
-      src="https://i.ibb.co/cNrYC6S/izabela-rutkowski-Nme6-Tb-Wu-Vp-A-unsplash.jpg"
-    />
+    <img src="https://i.ibb.co/QCxY7FT/michael-discenza-Mxfcoxyc-H-Y-unsplash.jpg" />
+    <img src="https://i.ibb.co/cNrYC6S/izabela-rutkowski-Nme6-Tb-Wu-Vp-A-unsplash.jpg" />
   </div>
 
   <!-- menu layout-->
   <section id="home-menu">
+    <p>Items Added to cart: {{cart}}</p>
     <h2>DRINK MENU</h2>
     <h3>Sprits, wine, and beer</h3>
-    <ul>
+    <ul *ngFor="let item of foodItems">
       <li>
-        <span class="dish">Vodka 1oz</span>
-        <span class="Price">$6</span>
-        <span class="Description">VODKA and choice of juice or soda.</span>
-      </li>
-      <li>
-        <span class="dish">Rum 1oz.</span>
-        <span class="Price">$6</span>
-        <span class="Description">RUM and choice of juice or soda.</span>
-      </li>
-      <li>
-        <span class="dish">Whisky 1oz.</span>
-        <span class="Price">$6</span>
-        <span class="Description">Whisky and choice of juice or soda.</span>
-      </li>
-      <li>
-        <span class="dish">Tequila 1oz.</span>
-        <span class="Price">$6</span>
-        <span class="Description">Tequila served with juice or soda.</span>
-      </li>
-      <li>
-        <span class="dish">Red wine.</span>
-        <span class="Price">$8</span>
-        <span class="Description"
-          >8oz Red wine, ask server for our wine selection.
-        </span>
-      </li>
-      <li>
-        <span class="dish">White wine.</span>
-        <span class="Price">$8</span>
-        <span class="Description"
-          >8oz white wine, ask server for our wine selection.</span
-        >
-      </li>
-      <li>
-        <span class="dish">Sparkling wine .</span>
-        <span class="Price">$12</span>
-        <span class="Description">8oz sparking wine glass of your choice.</span>
-      </li>
-      <li>
-        <span class="dish">Domestic and foreign beer .</span>
-        <span class="Price">$6 - $8</span>
-        <span class="Description">Domestic and foreign beer of you choice</span>
+        <span class="dish">{{item.drinks}}</span>
+        <span class="Price">{{item.price}}</span>
+        <span class="Description">{{item.description}}</span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
     </ul>
   </section>
@@ -66,14 +40,8 @@
 
 <div class="menu">
   <div class="menuIntro">
-    <img
-      id="caption_img"
-      src="https://i.ibb.co/9g9yg5G/chad-montano-l-P5-MCM6n-Z5-A-unsplash.jpg"
-    />
-    <img
-      id="caption_img"
-      src="https://i.ibb.co/q1HKkyL/ella-olsson-4d-Qia-WKi-L-Y-unsplash.jpg"
-    />
+    <img id="caption_img" src="https://i.ibb.co/9g9yg5G/chad-montano-l-P5-MCM6n-Z5-A-unsplash.jpg" />
+    <img id="caption_img" src="https://i.ibb.co/q1HKkyL/ella-olsson-4d-Qia-WKi-L-Y-unsplash.jpg" />
   </div>
 
   <section id="home-menu">
@@ -84,13 +52,13 @@
         <span class="dish">Nachos</span>
         <span class="Price">$12</span>
         <span class="Description">cheese, onions, tomotoes. </span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
         <span class="dish">Tacos.</span>
         <span class="Price">$12</span>
-        <span class="Description"
-          >chicken or beef with your choice of side.</span
-        >
+        <span class="Description">chicken or beef with your choice of side.</span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
         <span class="dish">Chicken rice bowl.</span>
@@ -98,6 +66,7 @@
         <span class="Description">
           brown rice, and veggies, served with choice or sauce
         </span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
         <span class="dish">Grilled chicken</span>
@@ -105,16 +74,19 @@
         <span class="Description">
           Juicy grilled chicken served with choice of sauce.
         </span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
         <span class="dish">Steak and fired beans.</span>
         <span class="Price">$15</span>
         <span class="Description">Steak and your choice of side.</span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
         <span class="dish">burrito.</span>
         <span class="Price">$12</span>
         <span class="Description">Your choice of beef or chicken.</span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
     </ul>
   </section>
@@ -122,9 +94,7 @@
 
 <div class="menu">
   <div class="menuIntro">
-    <img
-      src="https://i.ibb.co/GJ0Q03Q/camille-paralisan-rq-NIBr-DGnh4-unsplash.jpg"
-    />
+    <img src="https://i.ibb.co/GJ0Q03Q/camille-paralisan-rq-NIBr-DGnh4-unsplash.jpg" />
     <img src="https://i.ibb.co/rsxRJMX/oscar-nord-5-CPn8-NE2-Tc-unsplash.jpg" />
   </div>
   <section id="home-menu">
@@ -134,59 +104,55 @@
       <li>
         <span class="dish">Chocolate cake .</span>
         <span class="Price">$7</span>
-        <span class="Description"
-          >Loaded Chocolate cake with fudge topping.</span
-        >
+        <span class="Description">Loaded Chocolate cake with fudge topping.</span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
         <span class="dish">NY cheesecake.</span>
         <span class="Price">$12</span>
-        <span class="Description"
-          >NY cheesecake toped with strawberry topping.</span
-        >
+        <span class="Description">NY cheesecake toped with strawberry topping.</span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
-        <span class="dish">Apple pie.</span>
+        <span class="dish">Apple pie</span>
         <span class="Price">$6</span>
         <span class="Description">Warm apple pie tooped with icecream.</span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
-        <span class="dish">Churros.</span>
+        <span class="dish">Churros</span>
         <span class="Price">$7</span>
-        <span class="Description"
-          >pancake mix, water, oil, sugar, cinnamon.</span
-        >
+        <span class="Description">Pancake mix, water, oil, sugar, cinnamon.</span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
         <span class="dish">Sopaipillas</span>
         <span class="Price">$7</span>
-        <span class="Description"
-          >Light, crispy pastry puffs, sopaipillas are a sweet way to round out
-          a spicy meal.</span
-        >
+        <span class="Description">Light, crispy pastry puffs, sopaipillas are a sweet way to round out
+          a spicy meal.</span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
         <span class="dish">Creamy Caramel Flan.</span>
         <span class="Price">$12</span>
-        <span class="Description"
-          >A small slice of this impressively rich, creamy, caramel flan dessert
-          goes a long way.</span
-        >
+        <span class="Description">A small slice of this impressively rich, creamy, caramel flan dessert
+          goes a long way.</span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
-        <span class="dish">Shortcut Tres Leches Cake</span>
+        <span class="dish">Shortcut Tres Leeches Cake</span>
         <span class="Price">$12</span>
-        <span class="Description"
-          >My mom's favorite cake is tres leches, a butter cake soaked in three
+        <span class="Description">My mom's favorite cake is tres leeches, a butter cake soaked in three
           kinds of milk.
         </span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
       <li>
         <span class="dish">Pressure-Cooker Pumpkin Flans</span>
         <span class="Price">$14</span>
-        <span class="Description"
-          >This silky, smooth dessert captures the essence and elegance of fall.
+        <span class="Description">This silky, smooth dessert captures the essence and elegance of fall.
         </span>
+        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
       </li>
     </ul>
   </section>
