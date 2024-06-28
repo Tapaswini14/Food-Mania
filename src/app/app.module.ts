@@ -14,6 +14,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RegisterComponent } from './Components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -25,15 +29,19 @@ import { HttpClientModule } from '@angular/common/http';
     NotFoundComponent,
     ProfileComponent,
     ContactUsComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
     MatIconModule,
     FontAwesomeModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

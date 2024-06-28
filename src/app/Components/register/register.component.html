@@ -1,0 +1,16 @@
+<div class="container">
+    <form class="login" (ngSubmit)="registerUser()" [formGroup]="signUpForm">
+        <h2>Create an account</h2>
+        <input type="text" name="" formControlName="username" placeholder="Username" />
+        <input type="email" name="" formControlName="email" placeholder="Email Address" />
+        <input type="password" name="" formControlName="password" placeholder="Create Password" />
+        <input type="password" name="" formControlName="cnf_password" placeholder="Confirm Password" />
+        <div class="text-center">
+            <button class="btn btn-success" type="submit" [disabled]="signUpForm.invalid">Register</button>
+        </div>
+        <p class="signup">
+            Already have an account ?
+            <a routerLink="/login">Sign In</a>
+        </p>
+    </form>
+</div>

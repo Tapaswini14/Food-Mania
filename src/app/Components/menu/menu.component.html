@@ -4,7 +4,7 @@
     <img alt="Garcia Taverns where food meets passion" class="logo" src="../assets/bg.jpg" id="introLogo" />
   </div>
   <!-- subject-->
-  <div class="IntroMsg1">
+  <div class="IntroMsg1" style="margin-top: -1%;">
     <h1>Stunning food, Amazing Quality</h1>
     <span> Let us host your next special occassion </span>
     <h2>
@@ -15,145 +15,42 @@
   </div>
 </div>
 <div class="menu" style="margin-top: 50%">
-  <div class="menuIntro">
-    <!-- img tile system -->
-    <img src="https://i.ibb.co/QCxY7FT/michael-discenza-Mxfcoxyc-H-Y-unsplash.jpg" />
-    <img src="https://i.ibb.co/cNrYC6S/izabela-rutkowski-Nme6-Tb-Wu-Vp-A-unsplash.jpg" />
+  <div class="container">
+    <div class="row">
+      <div class="col-4 mb-4" *ngFor="let item of foodItems">
+        <div class="card h-100">
+          <div class="card__body">
+            <img [src]="item.image" alt="" class="card-image img-fluid">
+            <h2 class="card-title" style="font-size: medium;">{{item.name}}</h2>
+            <p class="card-description">
+              Difficulty Type: {{item.difficulty}}
+            </p>
+          </div>
+          <button class="btn btn-success w-50 m-4" (click)="getIndividualRecipe(item.id)">View Recipe</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- menu layout-->
-  <section id="home-menu">
-    <p>Items Added to cart: {{cart}}</p>
-    <h2>DRINK MENU</h2>
-    <h3>Sprits, wine, and beer</h3>
-    <ul *ngFor="let item of foodItems">
-      <li>
-        <span class="dish">{{item.drinks}}</span>
-        <span class="Price">{{item.price}}</span>
-        <span class="Description">{{item.description}}</span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-    </ul>
-  </section>
-  <!-- end of menu layout -->
-</div>
+  <ng-template #dialogContentTemplate>
+    <div style="padding: 20px !important" *ngIf="recipeData">
+      <div class="ingrit">
+        <h2>The Ingredients</h2>
+        <ol class="ingredients">
+          <li *ngFor="let ingredient of recipeData.ingredients"> &#8226; {{ ingredient }}</li>
+        </ol>
+      </div>
 
-<div class="menu">
-  <div class="menuIntro">
-    <img id="caption_img" src="https://i.ibb.co/9g9yg5G/chad-montano-l-P5-MCM6n-Z5-A-unsplash.jpg" />
-    <img id="caption_img" src="https://i.ibb.co/q1HKkyL/ella-olsson-4d-Qia-WKi-L-Y-unsplash.jpg" />
-  </div>
+      <div class="process">
+        <h2>The Process</h2>
+        <ol class="instructions">
+          <li *ngFor="let instruction of recipeData.instructions">&#8226; {{ instruction }}</li>
+        </ol>
+      </div>
 
-  <section id="home-menu">
-    <h2>FOOD MENU</h2>
-    <h3>Entrees, mains, and handhelds</h3>
-    <ul>
-      <li>
-        <span class="dish">Nachos</span>
-        <span class="Price">$12</span>
-        <span class="Description">cheese, onions, tomotoes. </span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">Tacos.</span>
-        <span class="Price">$12</span>
-        <span class="Description">chicken or beef with your choice of side.</span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">Chicken rice bowl.</span>
-        <span class="Price">$16</span>
-        <span class="Description">
-          brown rice, and veggies, served with choice or sauce
-        </span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">Grilled chicken</span>
-        <span class="Price">$15</span>
-        <span class="Description">
-          Juicy grilled chicken served with choice of sauce.
-        </span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">Steak and fired beans.</span>
-        <span class="Price">$15</span>
-        <span class="Description">Steak and your choice of side.</span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">burrito.</span>
-        <span class="Price">$12</span>
-        <span class="Description">Your choice of beef or chicken.</span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-    </ul>
-  </section>
-</div>
-
-<div class="menu">
-  <div class="menuIntro">
-    <img src="https://i.ibb.co/GJ0Q03Q/camille-paralisan-rq-NIBr-DGnh4-unsplash.jpg" />
-    <img src="https://i.ibb.co/rsxRJMX/oscar-nord-5-CPn8-NE2-Tc-unsplash.jpg" />
-  </div>
-  <section id="home-menu">
-    <h2>DESERT MENU</h2>
-    <h3>Deserts and sweets</h3>
-    <ul>
-      <li>
-        <span class="dish">Chocolate cake .</span>
-        <span class="Price">$7</span>
-        <span class="Description">Loaded Chocolate cake with fudge topping.</span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">NY cheesecake.</span>
-        <span class="Price">$12</span>
-        <span class="Description">NY cheesecake toped with strawberry topping.</span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">Apple pie</span>
-        <span class="Price">$6</span>
-        <span class="Description">Warm apple pie tooped with icecream.</span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">Churros</span>
-        <span class="Price">$7</span>
-        <span class="Description">Pancake mix, water, oil, sugar, cinnamon.</span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">Sopaipillas</span>
-        <span class="Price">$7</span>
-        <span class="Description">Light, crispy pastry puffs, sopaipillas are a sweet way to round out
-          a spicy meal.</span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">Creamy Caramel Flan.</span>
-        <span class="Price">$12</span>
-        <span class="Description">A small slice of this impressively rich, creamy, caramel flan dessert
-          goes a long way.</span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">Shortcut Tres Leeches Cake</span>
-        <span class="Price">$12</span>
-        <span class="Description">My mom's favorite cake is tres leeches, a butter cake soaked in three
-          kinds of milk.
-        </span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-      <li>
-        <span class="dish">Pressure-Cooker Pumpkin Flans</span>
-        <span class="Price">$14</span>
-        <span class="Description">This silky, smooth dessert captures the essence and elegance of fall.
-        </span>
-        <span class="cart"><button class="btn btn-secondary mb-2" (click)="addItem()">Add to Cart</button></span>
-      </li>
-    </ul>
-  </section>
+      <div style="display: flex; justify-content: center;">
+        <button class="btn btn-danger" (click)="closeDialog()">Close</button>
+      </div>
+    </div>
+  </ng-template>
 </div>

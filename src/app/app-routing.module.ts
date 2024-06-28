@@ -8,16 +8,21 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
-
+import { RegisterComponent } from './Components/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'menu', component: MenuComponent, canActivate: [AuthGuard] },
   { path: 'header', component: HeaderComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'contactUs', component: ContactUsComponent, canActivate: [AuthGuard] },
+  {
+    path: 'contactUs',
+    component: ContactUsComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '**', component: NotFoundComponent, canActivate: [AuthGuard] },
 ];
 

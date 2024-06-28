@@ -1,9 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 
+/* .container {
+  background: #c0c0c0;
+  font-family: Raleway, sans-serif;
+  color: #666;
+} */
+
 .login {
   margin: 20px auto;
   padding: 40px 50px;
-  max-width: 400px;
+  max-width: 500px;
   border-radius: 5px;
   background: #fff;
   box-shadow: 1px 1px 1px #666;
@@ -52,6 +58,27 @@
 
 .login p {
   margin-bottom: 40px;
+}
+
+.links {
+  display: table;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid #c0c0c0;
+  margin-bottom: 10px;
+}
+
+.links a {
+  display: table-cell;
+  padding-top: 10px;
+}
+
+.links a:first-child {
+  text-align: left;
+}
+
+.links a:last-child {
+  text-align: right;
 }
 
 .login h2,

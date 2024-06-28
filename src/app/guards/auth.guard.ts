@@ -17,9 +17,11 @@ export class AuthGuard {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (!this.auth.isLoggedIn()) {
-      this.router.navigate(['/login']);
+    if (this.auth.isLoggedIn()) {
+      return true;
+    } else {
+      this.router.navigate(['/login']); // Redirect to login page if not authenticated
+      return false;
     }
-    return this.auth.isLoggedIn();
   }
 }
