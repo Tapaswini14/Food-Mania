@@ -1,15 +1,8 @@
 import { Component, ElementRef } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthGuard } from 'src/app/guards/auth.guard';
-import { AuthService } from 'src/app/services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackbarService } from 'src/app/services/snackbar.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +10,8 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  usersName: any = [];
   constructor(
-    private elementRef: ElementRef,
     private formBuilder: FormBuilder,
     private router: Router,
     private auth: AuthService,
@@ -31,10 +24,6 @@ export class LoginComponent {
       email: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
-
-    if (this.auth.isLoggedIn()) {
-      this.router.navigate(['/home']);
-    }
   }
 
   loginUser() {
@@ -47,7 +36,7 @@ export class LoginComponent {
       (response: any) => {
         if (response.code === 200) {
           this.snackBar.openSnackBar('Logged In Successfully');
-
+          localStorage.setItem('Admin', response.user.username);
           this.snackBar.onSnackBarDismissed = () => {
             this.signInForm.reset();
             this.router.navigate(['/home']);

@@ -1,20 +1,5 @@
 <app-header></app-header>
-<div class="header" *ngIf="hideOnLogin">
-  <div class="IntroMsg">
-    <img alt="Garcia Taverns where food meets passion" class="logo" src="../assets/bg.jpg" id="introLogo" />
-  </div>
-  <!-- subject-->
-  <div class="IntroMsg1" style="margin-top: -1%;">
-    <h1>Stunning food, Amazing Quality</h1>
-    <span> Let us host your next special occassion </span>
-    <h2>
-      <a href="call:111-111-111" style="text-decoration: none; color: white">
-        <i class="bi bi-telephone-forward-fill">
-          <span> Contact US today </span></i></a>
-    </h2>
-  </div>
-</div>
-<div class="menu" style="margin-top: 50%">
+<div class="menu" style="margin-top: 10%">
   <div class="container">
     <div class="row">
       <div class="col-4 mb-4" *ngFor="let item of foodItems">
@@ -26,31 +11,31 @@
               Difficulty Type: {{item.difficulty}}
             </p>
           </div>
-          <button class="btn btn-success w-50 m-4" (click)="getIndividualRecipe(item.id)">View Recipe</button>
+          <button class="btn btn-success w-50 m-4" [routerLink]="['/recipe-modal', item.id]">View Recipe</button>
         </div>
       </div>
     </div>
   </div>
-
-  <ng-template #dialogContentTemplate>
-    <div style="padding: 20px !important" *ngIf="recipeData">
-      <div class="ingrit">
-        <h2>The Ingredients</h2>
-        <ol class="ingredients">
-          <li *ngFor="let ingredient of recipeData.ingredients"> &#8226; {{ ingredient }}</li>
-        </ol>
-      </div>
-
-      <div class="process">
-        <h2>The Process</h2>
-        <ol class="instructions">
-          <li *ngFor="let instruction of recipeData.instructions">&#8226; {{ instruction }}</li>
-        </ol>
-      </div>
-
-      <div style="display: flex; justify-content: center;">
-        <button class="btn btn-danger" (click)="closeDialog()">Close</button>
-      </div>
-    </div>
-  </ng-template>
 </div>
+
+<!-- <ng-template #dialogContentTemplate>
+  <div style="padding: 20px !important" *ngIf="recipeData">
+    <div class="ingrit">
+      <h2>The Ingredients</h2>
+      <ol class="ingredients">
+        <li *ngFor="let ingredient of recipeData.ingredients"> &#8226; {{ ingredient }}</li>
+      </ol>
+    </div>
+
+    <div class="process">
+      <h2>The Process</h2>
+      <ol class="instructions">
+        <li *ngFor="let instruction of recipeData.instructions">&#8226; {{ instruction }}</li>
+      </ol>
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+      <button class="btn btn-danger" (click)="closeDialog()">Close</button>
+    </div>
+  </div>
+</ng-template> -->

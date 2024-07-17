@@ -1,7 +1,8 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
+import { RecipeModalComponent } from '../modal/recipe-modal/recipe-modal.component';
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent {
+  @ViewChild('dialogContentTemplate') dialogContentTemplate!: TemplateRef<any>;
   hideOnLogin: boolean = false;
   foodItems: any = [];
   recipeData: any = [];
@@ -33,15 +35,12 @@ export class MenuComponent {
     this.auth.logout();
   }
 
-  @ViewChild('dialogContentTemplate') dialogContentTemplate!: TemplateRef<any>;
-  openDialog(): void {
-    this.dialog.open(this.dialogContentTemplate, {
-      width: '50%',
-    });
-  }
+  openDialog() {
+    const dialogRef = this.dialog.open(RecipeModalComponent);
 
-  closeDialog(): void {
-    this.dialog.closeAll();
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   getRecipe() {

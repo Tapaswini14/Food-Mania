@@ -1,17 +1,8 @@
-/*  grid system for the webpage */
-
 body {
-  background: #c0c0c0;
+  background: #e0dddd;
   font-family: Raleway, sans-serif;
   color: #666;
 }
-
-/* .mat-snack-bar-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 1000; 
-} */
 
 .header {
   width: 80%;

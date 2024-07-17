@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -22,4 +22,6 @@ export class HeaderComponent {
   logout(): void {
     this.auth.logout();
   }
+
+  adminName = localStorage.getItem('Admin');
 }

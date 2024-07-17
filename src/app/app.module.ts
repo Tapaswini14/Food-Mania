@@ -18,6 +18,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RegisterComponent } from './Components/register/register.component';
+import { RecipeModalComponent } from './Components/modal/recipe-modal/recipe-modal.component';
+import { AboutUsComponent } from './Components/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { RegisterComponent } from './Components/register/register.component';
     ProfileComponent,
     ContactUsComponent,
     RegisterComponent,
+    RecipeModalComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
